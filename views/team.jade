@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1= title
+  p #{teams.length} teams in competition
+  table
+    thead
+        tr
+            th Name
+            th Ponits
+            th Wins
+    tbody
+        for team in teams
+            tr
+                td= team.name
+                td= team.points
+                td= team.wins
