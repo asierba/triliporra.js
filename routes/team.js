@@ -4,21 +4,16 @@
 
 exports.list = function(req, res){
 	var mongoClient = require('mongodb').MongoClient,
-	format = require('util').format;
+		format = require('util').format,
+		MONGOHQ_URL = process.env.MONGOHQ_URL || 'mongodb://127.0.0.1:27017/triliporra';
 
-    mongoClient.connect('mongodb://127.0.0.1:27017/triliporra', function(err, db) {
+    mongoClient.connect(MONGOHQ_URL, function(err, db) {
 		if(err) throw err;
 
 		var teams = db.collection('teams');
        
-		teams.count(function(err, count) {			
-			console.log(format("count = %s", count));
-		});
-
 		teams.find().toArray(function(err, results) {
-			console.dir(results);
 			db.close();
-
 			res.render('team', {title: 'List of teams', teams: results});
 		});
     });
