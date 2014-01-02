@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+  h1= title
+  p #{users.length} users
+  table(class='table')
+    thead
+        tr
+            th Name
+            th Points
+    tbody
+        for user in users
+            tr
+                td= user.name
+                td= user.points
