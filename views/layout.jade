@@ -5,6 +5,26 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='/stylesheets/bootstrap.css')
     link(rel='stylesheet', href='/stylesheets/bootstrap-theme.css')
-    script( type='text/javascript', src='/javascripts/bootstrap.js')
+    script( type='text/javascript', src='/javascripts/jquery-2.0.3.js')
+    script( type='text/javascript', src='/javascripts/bootstrap.js')    
   body
+    ul(class='nav nav-pills')
+        li
+            a(href='/') Home        
+        li 
+            a(href='/users') Users
+        li 
+            a(href='/teams') Teams
+        li
+            a(href='/user/signup') Sign up
+        li
+            a(href='/user/login') Log in
     block content
+
+    script.
+        // Mark current page as active
+        var url = window.location;            
+        $('ul.nav a[href="'+ url +'"]').parent().addClass('active');
+        $('ul.nav a').filter(function() {
+            return this.href == url;
+        }).parent().addClass('active');
