@@ -14,7 +14,7 @@ exports.list = function(req, res){
        
 		teams.find().toArray(function(err, results) {
 			db.close();
-			res.render('team', {title: 'List of teams', teams: results});
+			res.render('team/list', {title: 'List of teams', teams: results});
 		});
     });
 };
