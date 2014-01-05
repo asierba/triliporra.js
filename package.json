@@ -9,6 +9,10 @@
     "express": "3.4.6",
     "jade": "*",
     "less-middleware": "*",
-    "mongodb":"*"
+    "mongodb":"*",
+    "express-validator": "*",
+    "jasmine-node":"*",
+    "passport":"*",
+    "passport-google":"*"
   }
 }
