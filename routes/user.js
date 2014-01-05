@@ -23,21 +23,20 @@ exports.signup_post = function(req, res){
     var MONGOHQ_URL = process.env.MONGOHQ_URL || 'mongodb://127.0.0.1:27017/triliporra';
     mongoose.connect(MONGOHQ_URL);
 
-    req.assert('email', 'required').notempty();
-
-    var errors = req.validationerrors();
-    if (errors) {
-        res.send('there have been validation errors: ' + util.inspect(errors), 400);
-        return;
-    }    
-
     var user = new User({ 
             name: req.body.username, 
             password: req.body.password, 
             email: req.body.email }); 
 
     user.save(function(error, createdUser) {
-        res.redirect('/user/');
         mongoose.connection.close();
+
+        if (error) {
+            res.send('there have been validation errors: ' + util.inspect(error.errors), 400);
+            return;
+        }    
+
+
+        res.redirect('/user/');
     });
 };
