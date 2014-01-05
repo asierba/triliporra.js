@@ -13,6 +13,7 @@
     "express-validator": "*",
     "jasmine-node":"*",
     "passport":"*",
-    "passport-google":"*"
+    "passport-google":"*",
+    "mongoose":"*"
   }
 }
