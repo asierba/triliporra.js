@@ -1,0 +1,18 @@
+extends ../layout
+
+//block content
+  h1= title
+  
+  p user
+  input(type='text')
+  p password
+  input(type='text')
+  
+  p
+  //ul(class='list-inline')
+    li
+        a(href='/user/login-google', class='btn btn-default') Google
+    li
+        a(href='/user/login-facebook', class='btn btn-default') Facebook
+    li
+        a(href='/user/login-twitter', class='btn btn-default') Twitter
