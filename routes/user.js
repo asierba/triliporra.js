@@ -1,9 +1,14 @@
-exports.list = function(req, res){
-    var repository = require('../repository');
+var mongoose = require('mongoose'),
+        User = require('../models/user'),
+        MONGOHQ_URL = process.env.MONGOHQ_URL || 'mongodb://127.0.0.1:27017/triliporra';
 
-    repository.getAll('users', function (results) {
-        res.render('user/list', {title: 'List of users', users: results});
-    });
+exports.list = function(req, res){
+        mongoose.connect(MONGOHQ_URL);
+
+        User.find({}, function(err, results) {
+            mongoose.connection.close();
+            res.render('user/list', {title: 'List of users', users: results});
+        });
 };
 
 exports.login = function(req, res){
@@ -15,18 +20,14 @@ exports.signup = function(req, res){
 };
 
 exports.signup_post = function(req, res){
-    var util = require('util'),
-        mongoose = require('mongoose');
-        User = require('../models/user');
-
-
-    var MONGOHQ_URL = process.env.MONGOHQ_URL || 'mongodb://127.0.0.1:27017/triliporra';
-    mongoose.connect(MONGOHQ_URL);
+    var util = require('util');
 
     var user = new User({ 
             name: req.body.username, 
             password: req.body.password, 
             email: req.body.email }); 
+
+    mongoose.connect(MONGOHQ_URL);
 
     user.save(function(error, createdUser) {
         mongoose.connection.close();
