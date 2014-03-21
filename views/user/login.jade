@@ -1,14 +1,17 @@
 extends ../layout
 
-//block content
+block content
   h1= title
   
-  p user
-  input(type='text')
-  p password
-  input(type='text')
-  
-  p
+  form(method='post')
+    div(class='form-group')
+      label user
+      input(type='text', name='username', class='form-control')
+    div(class='form-group')
+      label password
+      input(type='password', name='password', class='form-control')  
+    button(class='btn btn-default') log in
+  //p
   //ul(class='list-inline')
     li
         a(href='/user/login-google', class='btn btn-default') Google
