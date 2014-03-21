@@ -40,6 +40,7 @@ app.get('/', routes.index);
 
 app.get('/users', user.list);
 app.get('/user/login', user.login);
+app.post('/user/login', user.login_post);
 app.get('/user/signup', user.signup);
 app.post('/user/signup', user.signup_post);
 
