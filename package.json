@@ -15,6 +15,7 @@
     "passport":"*",
     "passport-google":"*",
     "mongoose":"*",
-    "bcrypt" : "*"
+    "bcrypt" : "*",
+    "migrate": "*"
   }
 }
