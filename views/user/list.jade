@@ -11,5 +11,6 @@ block content
     tbody
         for user in users
             tr
-                td= user.name
+                td 
+                  a(href='/user/'+user.name)= user.name
                 td= user.points
